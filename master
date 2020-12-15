@@ -1,4 +1,4 @@
-//ВНОШУ ИЗМЕНЕНИЯ В ФАЙЛ
+
 int BitCount = 8;
 String MyIntToBin(unsigned char In) 
 {
