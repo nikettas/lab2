@@ -1,6 +1,6 @@
-//Шифрование методом гаммирования Шифрование методом гаммирования Шифрование методом гаммирования 
+
 int BitCount = 8;
-String MyIntToBin(unsigned char In)
+String MyIntToBin(unsigned char In) 
 {
   int BitCount = 8;
   String Result("", BitCount);
