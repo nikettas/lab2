@@ -1,0 +1,49 @@
+int BitCount = 8;
+String MyIntToBin(unsigned char In)
+{
+  int BitCount = 8;
+  String Result("", BitCount);
+  for(int i = BitCount, Mask = 1; i > 0; i--, Mask <<= 1)
+    {
+      if(In & Mask)
+        Result[i] = '1';
+      else
+        Result[i] = '0';
+    }
+  return Result;
+}
+//---------------------------------------------------------------------------
+unsigned char MyBinToInt(String In)
+{
+  unsigned int Result = 0, Mult = 1;
+  for(int i = BitCount; i > 0; i--)
+  {
+    Result += StrToInt(In[i]) * Mult;
+    Mult *= 2;
+  }
+  return (unsigned char)Result;
+}
+//---------------------------------------------------------------------------
+String salt1, salt2;
+void TForm1::gen_salt()
+{
+  int i;
+  salt1 = "";
+  salt2 = "";
+  for (i = 1; i <= Login->Text.Length() * BitCount; i++)
+    salt1 += random(2);
+  for (i = 1; i <= Password->Text.Length() * BitCount; i++)
+    salt2 += random(2);
+}
+//---------------------------------------------------------------------------
+String code(String text, String salt)
+{
+  String result = "", code = "";
+  int i;
+
+  for (i = 1; i <= text.Length(); i++)
+    result += MyIntToBin(text[i]);  // перевод исходной строки в двоичный вид
+
+  randomize();
+  for (i = 1; i <= result.Length(); i++)
+    salt[i] == result[i] ? code += "0" : code += "1";  // шифрование XOR
